@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  # --- Veritabanı Servisi ---
+  user-db:
+    image: postgres:15
+    container_name: user-postgres
+    environment:
+      POSTGRES_DB: campuslink_main
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Şema oluşturmak için opsiyonel init script eklenebilir
+    ports:
+      - "5432:5432"
+    networks:
+      - campuslink-network
+
+  # --- Redis Servisi ---
+  user-redis:
+    image: redis:alpine
+    container_name: user-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - campuslink-network
+
+  # --- Sizin Uygulamanız ---
+  user-service:
+    build: .
+    container_name: user-service
+    depends_on:
+      - user-db
+      - user-redis
+    environment:
+      # Spring Boot ayarlarını burada eziyoruz (Localhost yerine servis isimleri)
+
+      # Portu sabitliyoruz (Docker içinde random port zor yönetilir)
+      SERVER_PORT: 8080
+
+      # Database Ayarları
+      SPRING_DATASOURCE_URL: jdbc:postgresql://user-db:5432/campuslink_main?currentSchema=user_schema
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12345
+
+      # Redis Ayarları
+      SPRING_DATA_REDIS_HOST: user-redis
+      SPRING_DATA_REDIS_PORT: 6379
+
+      # Kafka (Kafka'nın da bu networkte 'kafka' ismiyle çalıştığını varsayıyoruz)
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+
+      # Eureka (Eureka'nın 'discovery-server' ismiyle çalıştığını varsayıyoruz)
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery-server:8761/eureka
+
+      # Zipkin (Zipkin'in 'zipkin' ismiyle çalıştığını varsayıyoruz)
+      MANAGEMENT_ZIPKIN_TRACING_ENDPOINT: http://zipkin:9411/api/v2/spans
+
+      # Cloudinary Değişkenleri (.env dosyasından veya bilgisayarınızdan alır)
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
+    ports:
+      - "8080:8080" # Dışarıdan erişim için (Eureka kullanıyorsanız gerekmeyebilir ama test için iyidir)
+    networks:
+      - campuslink-network
+
+volumes:
+  postgres_data:
+
+networks:
+  campuslink-network:
+    driver: bridge

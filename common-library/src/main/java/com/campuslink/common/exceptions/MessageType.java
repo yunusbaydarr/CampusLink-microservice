@@ -1,0 +1,40 @@
+package com.campuslink.common.exceptions;
+
+import lombok.Getter;
+
+@Getter
+public enum MessageType {
+    USER_NOT_FOUND("USER NOT FOUND.","1111"),
+    USERNAME_ALREADY_EXISTS("USERNAME ALREADY EXISTS","2000"),
+    EMAIL_ALREADY_EXISTS("EMAIL ALREADY EXISTS","2001"),
+    IMAGE_UPLOAD_FAILED("FAILED TO UPLOAD IMAGE.","4444"),
+    EVENT_NOT_FOUND("EVENT BULUNAMADI.","3333"),
+    INVITATION_NOT_FOUND("INVITATION BULUNAMADI.","2345"),
+    EVENT_PARTICIPANT_NOT_FOUND("The user did not participate in this event.","3244"),
+    CLUB_NOT_FOUND("CLUB BULUNAMADI.","2222"),
+    USER_SERVICE_ERROR("USER SERVICE ERROR","3000"),
+    CLUB_MEMBER_NOT_FOUND("MEMBERSHIP NOT FOUND","5555"),
+    MAIL_COULD_NOT_SEND("Mail could not be send","7777"),
+    USER_SERVICE_BAD_REQUEST("USER SERVICE BAD REQUEST","3001"),
+    REMOTE_USER_NOT_FOUND("REMOTE USER NOT FOUND","3002"),
+    USER_SERVICE_UNAVAILABLE("USER SERVICE UNAVAILABLE","3003"),
+    ALREADY_PENDING_INVITATION("There is already a pending invitation for this user in this club","4002"),
+    INVITATION_ALREADY_RESPONDED("Invitation already responded","4001"),
+    CLUB_SERVICE_BAD_REQUEST("CLUB SERVICE BAD REQUEST","3006"),
+    REMOTE_CLUB_NOT_FOUND("REMOTE CLUB NOT FOUND","3035"),
+    CLUB_SERVICE_UNAVAILABLE("CLUB SERVICE UNAVAILABLE","3503"),
+    ALREADY_JOINED_EVENT("ALREADY JOINED EVENT","6532"),
+    ALREADY_JOINED_CLUB("ALREADY JOINED CLUB ","6532")
+    ;
+
+
+
+
+    private final String code;
+    private final String message;
+
+    MessageType(String message, String code){
+        this.message=message;
+        this.code=code;
+    }
+}
