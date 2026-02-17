@@ -11,7 +11,7 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-green)
 ![Kafka](https://img.shields.io/badge/Apache_Kafka-Event_Driven-black)
 ![Redis](https://img.shields.io/badge/Redis-Caching-red)
-![MySQL](https://img.shields.io/badge/MySQL-Database-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
 
 </div>
 
