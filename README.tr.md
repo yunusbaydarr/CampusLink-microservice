@@ -8,10 +8,10 @@
 **Spring Boot, Kafka ve Redis ile geliştirilmiş ölçeklenebilir sosyal platform altyapısı.**
 
 ![Java](https://img.shields.io/badge/Java-17-orange)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-green)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1-green)
 ![Kafka](https://img.shields.io/badge/Apache_Kafka-Olay_Güdümlü-black)
 ![Redis](https://img.shields.io/badge/Redis-Önbellek-red)
-![MySQL](https://img.shields.io/badge/MySQL-Veritabanı-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Veritabanı-blue)
 
 </div>
 
