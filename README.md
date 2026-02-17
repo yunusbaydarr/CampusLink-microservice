@@ -8,7 +8,7 @@
 **Scalable social platform backend built with Spring Boot, Kafka, and Redis.**
 
 ![Java](https://img.shields.io/badge/Java-17-orange)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-green)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.1-green)
 ![Kafka](https://img.shields.io/badge/Apache_Kafka-Event_Driven-black)
 ![Redis](https://img.shields.io/badge/Redis-Caching-red)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
